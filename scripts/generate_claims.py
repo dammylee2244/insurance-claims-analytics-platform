@@ -19,6 +19,7 @@ for i in range(1000):
     claims.append({
         "claim_id": i + 1,
         "customer_id": random.randint(1000, 5000),
+        "ssn": fake.ssn(),
         "policy_type": random.choice(policy_types),
         "claim_amount": claim_amount,
         "claim_status": random.choice(

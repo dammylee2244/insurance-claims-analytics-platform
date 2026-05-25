@@ -4,7 +4,12 @@ df = pd.read_csv("data/raw/insurance_claims.csv")
 
 # Normalize columns
 df.columns = df.columns.str.lower()
-
+# Mask SSN
+df["masked_ssn"] = df["ssn"].apply(
+    lambda x: f"XXX-XX-{x[-4:]}"
+)
+# Remove raw SSN column
+df = df.drop(columns=["ssn"])
 # High-value claims
 df["high_value_claim"] = (
     df["claim_amount"] > 30000
